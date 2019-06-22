@@ -29,22 +29,14 @@ const renderHandler = async ({
   config
 }, cxt) => {
 
-  const {logger} = cxt;
-
   let loadableState = {};
   //loadableState = await getLoadableState(appWithRouter);;;;
 
   function* rootSaga() {
     yield all(watchers.map(saga => fork(saga)));
   }
-
-  logger.info("Run initial/mount request saga");
   store.runSaga(rootSaga).done.then(() => {
-
-    logger.info("Render graph data");
     getDataFromTree(AppRoot).then(() => {
-
-      logger.info("Render store/graph to node stream");
       const preloadedState = store.getState();
       const htmlSteam = renderHeader({mounts}) + renderToString(AppRoot) + renderFooter({
         css: "",
