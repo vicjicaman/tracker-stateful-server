@@ -28,7 +28,7 @@ export const renderHeader = ({mounts}) => {
         <head>
           <meta charset="utf-8"/>
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-          <title>Repoflow</title>
+          <title>Tracker</title>
             ` + mountRes + `
         </head>
         <body>
